@@ -1,0 +1,34 @@
+```lua
+local UserInputService = game:GetService("UserInputService")
+local guiEnabled = false
+
+function toggleGui()
+	-- Check if the ModGui is already in the CoreGui; if not, create it
+	if not game.CoreGui:FindFirstChild("ModGui") then
+		local players = game:GetService("Players")
+		local gui = Instance.new("ScreenGui", game.CoreGui)
+		gui.Name = "ModGui"
+
+		-- create the GUI elements (same as before)
+
+		-- add click events for the buttons (same as before)
+	end
+
+	-- toggle visibility of the ModGui
+	local gui = game.CoreGui:FindFirstChild("ModGui")
+	if gui then
+		guiEnabled = not guiEnabled
+		gui.Enabled = guiEnabled
+	end
+end
+
+UserInputService.InputBegan:Connect(function(input, processed)
+	if not processed and input.KeyCode == Enum.KeyCode.Zero then
+		toggleGui()
+	end
+end)
+```
+
+In this example, the `toggleGui` function is called when the "0" key is pressed. This function creates the GUI if it is not already present and toggles its visibility. Note that the `guiEnabled` variable is used to track the current visibility state of the GUI.
+
+You can modify this code further to fit your needs, such as changing the input key or adding additional logic to the `toggleGui` function.
